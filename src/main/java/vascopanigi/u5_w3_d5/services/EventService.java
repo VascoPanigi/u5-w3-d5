@@ -17,6 +17,7 @@ import vascopanigi.u5_w3_d5.repositories.EventRepository;
 import vascopanigi.u5_w3_d5.repositories.UserRepository;
 
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -34,7 +35,11 @@ public class EventService {
     }
 
     public Event save(NewEventDTO body) {
-        Event newEvent = new Event(body.description(), body.location(), body.date(), body.capacity());
+//        Event newEvent = new Event(body.description(), body.location(), body.date(), body.capacity());
+        Event newEvent = new Event(body.capacity(), body.location(), body.description()  );
+        Random rndm = new Random();
+        newEvent.setDate(LocalDate.now().plusDays(rndm.nextInt(1,100)));
+
         return eventRepository.save(newEvent);
     }
 

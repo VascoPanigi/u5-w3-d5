@@ -34,4 +34,10 @@ public class Event {
         this.date = date;
         this.max_participants = max_participants;
     }
+
+    public Event(int max_participants, String location, String description) {
+        this.max_participants = max_participants;
+        this.location = location;
+        this.description = description;
+    }
 }

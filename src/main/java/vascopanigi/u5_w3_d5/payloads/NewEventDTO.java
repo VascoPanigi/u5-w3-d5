@@ -5,14 +5,13 @@ import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 
-public record NewEventDTO(@NotEmpty(message = "The title is mandatory")
-                          String title,
+public record NewEventDTO(
                           @NotEmpty(message = "The description is mandatory")
                           String description,
                           @NotEmpty(message = "The location is mandatory")
                           String location,
-                          @NotNull(message = "The date is mandatory")
-                            LocalDate date,
+//                          @NotNull(message = "The date is mandatory")
+//                            LocalDate date,
                           int capacity)
 {
 }
