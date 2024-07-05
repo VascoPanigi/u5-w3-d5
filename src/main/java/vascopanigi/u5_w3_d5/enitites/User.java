@@ -32,7 +32,6 @@ public class User implements UserDetails {
     private UserRole role;
     private String username;
     private String email;
-    private String avatarURL;
 
     public User(String name, String surname, String email, String password) {
         this.name = name;

@@ -52,5 +52,4 @@ public class UserService {
         User found = this.findById(userId);
         this.userRepository.delete(found);
     }
-
 }
