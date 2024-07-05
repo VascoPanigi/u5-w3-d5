@@ -10,6 +10,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import vascopanigi.u5_w3_d5.enums.UserRole;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -32,6 +33,15 @@ public class User implements UserDetails {
     private UserRole role;
     private String username;
     private String email;
+
+    @ManyToMany
+    @JoinTable(
+            name = "bookings",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> eventBookings = new ArrayList<>();
+
 
     public User(String name, String surname, String email, String password) {
         this.name = name;
