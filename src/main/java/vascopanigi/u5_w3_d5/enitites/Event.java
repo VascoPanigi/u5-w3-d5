@@ -1,26 +1,37 @@
 package vascopanigi.u5_w3_d5.enitites;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.ManyToAny;
 
 import java.util.UUID;
 
-@Entity
 @Setter
 @Getter
+@NoArgsConstructor
+@Entity
+@Table(name = "eventi")
 public class Event {
-    //titolo, descrizione, data, luogo e numero di posti
-    // disponibili, l’evento inoltre deve avere un riferimento
-    // al creatore di esso. Gli organizzatori devono anche poter
-    // modificare ed eventualmente eliminare eventi
-
     @Id
     @GeneratedValue
     @Setter(AccessLevel.NONE)
     private UUID id;
 
+    private String description;
+
+    private String location;
+    private int max_participants;
+
+    @ManyToOne
+    @JoinColumn(name = "organizer_id")
+    private User user;
+
+    public Event(String description, String location, int max_participants) {
+        this.description = description;
+        this.location = location;
+        this.max_participants = max_participants;
+    }
 }
