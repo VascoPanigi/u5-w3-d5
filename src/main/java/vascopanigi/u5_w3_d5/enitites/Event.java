@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "eventi")
+@Table(name = "events")
 public class Event {
     @Id
     @GeneratedValue
